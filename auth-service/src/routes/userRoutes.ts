@@ -19,8 +19,8 @@ const router = Router();
  *             required:
  *               - email
  *               - password
- *               - firstName
- *               - lastName
+ *               - first_name
+ *               - last_name
  *             properties:
  *               email:
  *                 type: string
@@ -28,9 +28,9 @@ const router = Router();
  *               password:
  *                 type: string
  *                 format: password
- *               firstName:
+ *               first_name:
  *                 type: string
- *               lastName:
+ *               last_name:
  *                 type: string
  *     responses:
  *       201:
@@ -49,9 +49,9 @@ const router = Router();
  *                       type: string
  *                     email:
  *                       type: string
- *                     firstName:
+ *                     first_name:
  *                       type: string
- *                     lastName:
+ *                     last_name:
  *                       type: string
  *       400:
  *         description: User already exists
@@ -99,9 +99,9 @@ router.post('/register', register);
  *                       type: string
  *                     email:
  *                       type: string
- *                     firstName:
+ *                     first_name:
  *                       type: string
- *                     lastName:
+ *                     last_name:
  *                       type: string
  *       400:
  *         description: Invalid credentials
@@ -143,14 +143,14 @@ router.get('/profile', authMiddleware, getProfile);
  *           schema:
  *             type: object
  *             required:
- *               - firstName
- *               - lastName
+ *               - first_name
+ *               - last_name
  *             properties:
- *               firstName:
+ *               first_name:
  *                 type: string
  *                 description: User's first name
  *                 minLength: 1
- *               lastName:
+ *               last_name:
  *                 type: string
  *                 description: User's last name
  *                 minLength: 1
@@ -166,12 +166,12 @@ router.get('/profile', authMiddleware, getProfile);
  *                   type: string
  *                 email:
  *                   type: string
- *                 firstName:
+ *                 first_name:
  *                   type: string
- *                 lastName:
+ *                 last_name:
  *                   type: string
  *       400:
- *         description: Invalid input - firstName and lastName are required
+ *         description: Invalid input - first_name and last_name are required
  *       401:
  *         description: Unauthorized
  *       404:

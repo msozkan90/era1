@@ -104,3 +104,32 @@ export const joinEvent = async (req: AuthRequest, res: Response) => {
     res.status(500).json({ message: 'Error joining event' });
   }
 };
+
+export const updateEventStatus = async (req: AuthRequest, res: Response) => {
+  try {
+    const userId = req.user?.userId;
+    const { status } = req.body;
+
+    const validStatuses = ['upcoming', 'ongoing', 'completed', 'cancelled'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: 'Invalid status' });
+    }
+
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    if (String(event.organizer) !== String(userId)) {
+      return res.status(403).json({ message: 'Not authorized to update this event' });
+    }
+
+    event.status = status;
+    await event.save();
+
+    res.json(event);
+  } catch (error) {
+    console.error('Update event status error:', error);
+    res.status(500).json({ message: 'Error updating event status' });
+  }
+};

@@ -2,8 +2,8 @@ export interface User {
   id: string;
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -11,8 +11,8 @@ export interface User {
 export interface UserInput {
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
 }
 
 export interface LoginInput {

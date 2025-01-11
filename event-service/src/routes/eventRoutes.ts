@@ -5,7 +5,8 @@ import {
   getEvents,
   getEventById,
   updateEvent,
-  joinEvent
+  joinEvent,
+  updateEventStatus
 } from '../controllers/eventController';
 
 const router = Router();
@@ -173,5 +174,52 @@ router.put('/:id', authMiddleware, updateEvent);
  *         description: Server error
  */
 router.post('/:id/join', authMiddleware, joinEvent);
+
+/**
+ * @swagger
+ * /api/events/{id}/status:
+ *   put:
+ *     summary: Update event status (organizer only)
+ *     tags: [Events]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Event ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - status
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum: [upcoming, ongoing, completed, cancelled]
+ *     responses:
+ *       200:
+ *         description: Event status updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Event'
+ *       400:
+ *         description: Invalid status
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Not authorized to update this event
+ *       404:
+ *         description: Event not found
+ *       500:
+ *         description: Server error
+ */
+router.put('/:id/status', authMiddleware, updateEventStatus);
 
 export default router;
