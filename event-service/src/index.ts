@@ -26,6 +26,7 @@ app.get('/health', (req: Request, res: Response) => {
 
 const startServer = async () => {
   try {
+
     await connectDB();
 
     app.listen(port, () => {
