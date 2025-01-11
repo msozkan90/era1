@@ -9,4 +9,4 @@ coverage
 dist
 .vscode
 *.md
-.DS_Store 
+.DS_Store
