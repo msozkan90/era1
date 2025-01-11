@@ -5,6 +5,100 @@ Bu proje, kullanıcıların etkinlikler oluşturmasına, etkinliklere katılmas�
 
 ## Kullanılan Teknolojiler
 ### Frontend
+Bu projede **React**, **Vite**, ve **TypeScript** kullanılmıştır. Arayüz tasarımı için **Tailwind CSS** tercih edilmiştir. Durum yönetimi ve HTTP istekleri gibi işlemler için ise çeşitli kütüphaneler (örn. `axios`, `zustand`, `react-query`) kullanılmıştır.
+
+### Özellikler
+
+1. **Kullanıcı Dostu ve Responsive Tasarım**
+   - Etkinliklerin listelenmesi
+   - Yeni etkinlik oluşturma ve düzenleme formları
+   - Etkinliklere katılma butonları
+   - Yorum ekleme ve görüntüleme
+
+2. **React Router**
+   - Çok sayfalı yönlendirme: `/login`, `/events`, `/events/:id`, vb.
+
+3. **State Yönetimi**
+   - `zustand` ve `react-query` kombinasyonu ile basit ve hızlı durum yönetimi
+
+4. **Form Yönetimi**
+   - `formik` + `yup` kullanımı ile doğrulamalı formlar
+
+5. **Bildirim Sistemi**
+   - `react-hot-toast` ile kullanıcıya hatalar ve başarı mesajları gösterme
+
+---
+
+
+## Kurulum
+
+### Gereksinimler
+
+- Node.js (v16+ veya v18+) ve npm/yarn yüklü olmalı.
+
+### Adımlar
+
+1. **Proje Dizini**
+   Frontend projesi, ana proje klasörünüzde `frontend` veya benzeri bir klasörde yer alıyor olabilir. İlgili dizine geçiş yapın:
+   ```bash
+   cd event-management-frontend
+   ```
+2. **Bağımlılıkların Yüklenmesi**
+   ```bash
+   npm install
+   ```
+   veya
+   ```bash
+   yarn
+   ```
+3. **Geliştirme Sunucusunu Başlatma**
+   ```bash
+   npm run dev
+   ```
+   Bu komut, lokal geliştirme sunucusunu (Vite) başlatır ve genellikle `http://localhost:5173` veya benzeri bir port üzerinden uygulamaya erişebilirsiniz.
+
+4. **Üretim (Production) Derlemesi Oluşturma**
+   ```bash
+   npm run build
+   ```
+   Bu komut, optimize edilmiş ve dağıtıma hazır bir üretim paketi oluşturur. `dist` klasöründe derlenmiş dosyalar yer alır.
+
+5. **Ön İzleme (Preview)**
+   Üretim derlemesi sonrasında, uygulamayı yerel ortamda test etmek için:
+   ```bash
+   npm run preview
+   ```
+   Bu komut, `dist` klasöründeki dosyaları sunan bir sunucu başlatır.
+
+---
+
+## Önemli Paketler ve Kullanımları
+
+- **`react` & `react-dom`**: Ana UI kütüphanesi ve DOM ile etkileşim.
+- **`react-router-dom`**: Sayfalar arası gezinme ve yönlendirme (routing).
+- **`zustand`**: Basit ve performanslı state yönetimi.
+- **`@tanstack/react-query`**: Sunucudan veri çekme (fetch), önbellekleme ve senkronizasyon işlemleri.
+- **`axios`**: HTTP isteklerini gerçekleştirme.
+- **`formik` & `yup`**: Form yönetimi ve doğrulama.
+- **`tailwindcss`**: Hızlı ve esnek bir CSS framework’ü.
+- **`react-hot-toast`**: Kullanıcıya hatalar, uyarılar ve başarı mesajları göstermeye yarayan bildirim kütüphanesi.
+
+---
+
+
+## API Entegrasyonu
+
+- **Auth Servisi (auth-service)**: `http://localhost:3001` (Docker veya manuel çalıştırma)
+- **Event Servisi (event-service)**: `http://localhost:3002`
+
+Geliştirme aşamasında, bu servisler için `BASE_URL` veya benzeri değişkenler `.env` dosyasında tanımlanabilir. Örnek `.env` içeriği:
+```
+VITE_AUTH_API_URL=http://localhost:3001
+VITE_EVENT_API_URL=http://localhost:3002
+```
+
+---
+
 
 
 ### Backend
